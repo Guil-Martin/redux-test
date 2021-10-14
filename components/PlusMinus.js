@@ -20,11 +20,10 @@ const PlusMinus = (
   );
 };
 
-const mapStateToProps = (state) => ({ values: state.values });
-
-console.log("PlusMinus mapStateToProps", mapStateToProps);
-
-export default connect(mapStateToProps, (dispatch) => ({
-  handleAdd: (ary) => dispatch(addAction(ary)),
-  handleSubstract: (ary) => dispatch(substractAction(ary)),
-}))(PlusMinus);
+export default connect(
+  (state) => ({ values: state.values.values }),
+  (dispatch) => ({
+    handleAdd: (ary) => dispatch(addAction(ary)),
+    handleSubstract: (ary) => dispatch(substractAction(ary)),
+  })
+)(PlusMinus);
