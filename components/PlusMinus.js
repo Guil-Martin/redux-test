@@ -2,8 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { addAction, substractAction } from "../actions/PlusMinusActions";
 
-const PlusMinus = ({ values, addAction, substractAction }, ...props) => {
-  console.log(values, addAction, substractAction, props);
+const PlusMinus = (
+  { values = [8, 14, 9, 8, 6, 5, 17], handleAdd, handleSubstract },
+  ...props
+) => {
+  console.log(values, handleAdd, handleSubstract, props);
   return (
     <>
       <h1>Ajouter ou soustraire 1 à toutes les valeurs</h1>
@@ -17,11 +20,11 @@ const PlusMinus = ({ values, addAction, substractAction }, ...props) => {
   );
 };
 
-const PlusMinusContainer = (state) => ({ values: state.values });
+const mapStateToProps = (state) => ({ values: state.values });
 
-console.log("PlusMinusContainer", PlusMinusContainer);
+console.log("PlusMinus mapStateToProps", mapStateToProps);
 
-export default connect(PlusMinusContainer, (dispatch) => ({
+export default connect(mapStateToProps, (dispatch) => ({
   handleAdd: (ary) => dispatch(addAction(ary)),
   handleSubstract: (ary) => dispatch(substractAction(ary)),
 }))(PlusMinus);

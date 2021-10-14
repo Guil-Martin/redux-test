@@ -9,7 +9,6 @@ export default function (state = initialState, action) {
 
   console.log("state", state, "action", action);
   console.log("state values", state.values, "action", action);
-
   console.log("type", type, "payload", payload);
 
   switch (type) {
